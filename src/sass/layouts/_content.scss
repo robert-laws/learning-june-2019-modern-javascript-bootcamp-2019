@@ -1,4 +1,42 @@
 .container {
-  width: 1200px;
+  width: 900px;
   margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 2rem 0 1.5rem;
+}
+
+p {
+  margin: 1rem;
+}
+
+.example {
+  border: 1px solid $color-primary;
+  margin: 0 1rem;
+}
+
+.code {
+  border: 1px solid $color-primary;
+  border-radius: 5px;
+  background-color: lighten($color-primary, 20%);
+  margin: 20px 1rem;
+  padding: 15px 0;
+
+  .indent {
+    margin-left: 2rem;
+  }
+
+  .space::after {
+    content: "-";
+    color: lighten($color-primary, 20%);
+  }
+
+  code {
+    color: #FFF;
+    padding: 0 20px;
+    font-weight: 500;
+    font-size: 1.8rem;
+    display: block;
+  }
 }

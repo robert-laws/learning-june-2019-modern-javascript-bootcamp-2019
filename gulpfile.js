@@ -42,6 +42,7 @@ gulp.task('scripts', function() {
     .pipe(babel({
         presets: ['@babel/env']
     }))
+    .pipe(concat('main.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.scripts.dest));
   return stream;
