@@ -4,7 +4,8 @@
   "description": "code along for modern javascript bootcamp 2019",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "default": "gulp default",
+    "clean": "gulp clean"
   },
   "repository": {
     "type": "git",
