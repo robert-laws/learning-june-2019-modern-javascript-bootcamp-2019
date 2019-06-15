@@ -1,1 +1,4 @@
-console.log('hello there...');
+let name = "bob"
+let hello = `hello there, ${name}.`;
+
+console.log(hello);
