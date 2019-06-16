@@ -1,7 +1,7 @@
 // forEach array helper methods
 let names = ["bob", "hal", "mel", "ned", "abe", "jim", "lou", "kal", "vin", "don", "sal"];
 
-let resOne = document.querySelector("#result-one");
+let resOne = document.querySelector("#for-each-result-one");
 
 names.forEach(function(name) {
   resOne.innerHTML += `<p>${name}</p>`;
@@ -16,5 +16,5 @@ function add(number) {
 
 numbers.forEach(add);
 
-let resTwo = document.querySelector("#result-two");
+let resTwo = document.querySelector("#for-each-result-two");
 resTwo.innerHTML = `<p>${sum}</p>`;

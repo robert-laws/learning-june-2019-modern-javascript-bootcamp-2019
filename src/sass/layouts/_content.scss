@@ -1,35 +1,67 @@
 .container {
   width: 900px;
   margin: 0 auto;
+
+  a {
+    text-decoration: none;
+  }
+  
+  a:link, a:visited {
+    color: darken($color-link, 4%);
+  }
+  
+  a:hover, a:active {
+    color: lighten($color-link, 12%);
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   margin: 2rem 0 1.5rem;
+}
+
+h4, h5, h6 {
+  margin: 3rem 1rem 1rem;
 }
 
 p {
   margin: 1rem;
 }
 
+ul {
+  margin: 2rem 3rem;
+
+  li {
+    margin: 1rem 0;
+  }
+}
+
+hr {
+  opacity: 0.25;
+}
+
 .example {
   border: 1px solid $color-primary;
-  margin: 0 1rem;
+  margin: 1rem 1rem 4rem;
 }
 
 .code {
   border: 1px solid $color-primary;
   border-radius: 5px;
-  background-color: lighten($color-primary, 20%);
+  background-color: lighten($color-primary, 15%);
   margin: 20px 1rem;
   padding: 15px 0;
 
-  .indent {
+  .i {
     margin-left: 2rem;
   }
 
-  .space::after {
+  .i2 {
+    margin-left: 4rem;
+  }
+
+  .s::after {
     content: "-";
-    color: lighten($color-primary, 20%);
+    color: lighten($color-primary, 15%);
   }
 
   code {

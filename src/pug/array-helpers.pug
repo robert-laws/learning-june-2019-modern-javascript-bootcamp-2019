@@ -2,28 +2,160 @@ extends layouts/default.pug
 
 block content
   div(class="container")
-    h4 Array Helpers
+    h2 Array Helpers
 
-    p forEach loop
+    ul
+      li
+        a(href="#for-each") forEach
+      li
+        a(href="#map") map
+      li
+        a(href="#filter") filter
+      li
+        a(href="#find") find
+
+    hr
+
+    h4(id="for-each") forEach
+   
+    p Loops through the array and returns a callback - which performs some action on the array item.
 
     div(class="code")
       code let names = ["bob", "hal", "mel", "ned", "abe", "jim", "lou", "kal", "vin", "don", "sal"];
-      code(class="space") 
+      code(class="s") 
       code names.forEach(function(name) {
-      code(class="indent") console.log(name);
+      code(class="i") console.log(name);
       code })
 
-    div(id="result-one" class="example")
+    div(id="for-each-result-one" class="example")
 
     div(class="code")
       code let numbers = [1, 2, 3, 4, 5, 6];
       code let sum = 0;
-      code(class="space") 
+      code(class="s") 
       code function add(number) {
-      code(class="indent") sum += number;
+      code(class="i") sum += number;
       code }
-      code(class="space")
+      code(class="s")
       code number.forEach(add);
 
-    div(id="result-two" class="example")
+    div(id="for-each-result-two" class="example")
 
+    hr
+
+    h4(id="map") map
+
+    p Loops through the array and maps the result of the callback function to the new array.
+
+    div(class="code")
+      code let numbers = [2, 4, 6, 8, 10];
+      code(class="s")
+      code let doubles = numbers.map(function(number) {
+      code(class="i") return number * 2;
+      code })
+
+    div(id="map-result-one" class="example")
+
+    div(class="code")
+      code const cars = [
+      code(class="i") { model: "Chevy", price: "CHEAP" },
+      code(class="i") { model: "Camero", price: "expensive" }
+      code ];
+      code(class="s")
+      code let prices = cars.map(function() {
+      code(class="i") return car.price;
+      code });
+
+    div(id="map-result-two" class="example")
+
+    hr
+
+    h4(id="filter") filter
+
+    p Loops through an array and returns an item if the condition returns truthy and does not return an item if condition returns falsy.
+
+    div(class="code")
+      code const products = [
+      code(class="i") { name: "lemon", type: "fruit" },
+      code(class="i") { name: "orange", type: "fruit" },
+      code(class="i") { name: "celery", type: "vegetable" },
+      code(class="i") { name: "apple", type: "fruit" },
+      code(class="i") { name: "cucumber", type: "vegetable" }
+      code ]
+      code(class="s")
+      code let filteredProducts = products.filter(function(product) {
+      code(class="i") return product.type === 'fruit';
+      code })
+
+    div(id="filter-result-one" class="example")
+
+    div(class="code")      
+      code const newProducts = [
+      code(class="i") { name: "lemon", type: "fruit", quantity: 10, price: 5 },
+      code(class="i") { name: "orange", type: "fruit", quantity: 4, price: 12 },
+      code(class="i") { name: "celery", type: "vegetable", quantity: 15, price: 12 },
+      code(class="i") { name: "apple", type: "fruit", quantity: 5, price: 6 },
+      code(class="i") { name: "cucumber", type: "vegetable", quantity: 12, price: 19 }
+      code ]
+      code(class="s")
+      code let filteredNewProducts = newProducts.filter(function(product) {
+      code(class="i") return (product.type === 'vegetable' && product.quantity > 5 && product.price < 15)
+      code });
+
+    div(id="filter-result-two" class="example")
+
+    div(class="code")
+      code const post = { id: 4, title: 'My Post' }
+      code const comments = [
+      code(class="i") { postId: 4, content: 'good post'},
+      code(class="i") { postId: 3, content: 'interesting topic'},
+      code(class="i") { postId: 4, content: 'did not like'}
+      code ]
+      code(class="s") 
+      code function commentsForPost(post, comments) {
+      code(class="i")  return comments.filter(function(comment) {
+      code(class="i2") return comment.postId === post.id;
+      code(class="i")  })
+      code }
+      code(class="s")
+      code commentsForPost(post, comments);
+
+    div(id="filter-result-three" class="example")
+
+    hr
+
+    h4(id="find") find
+
+    p Loops through an array and returns the first item that returns true on the condition.
+
+    div(class="code")
+      code const findUsers = [
+      code(class="i") { name: 'bob' },
+      code(class="i") { name: 'kal' },
+      code(class="i") { name: 'hal' },
+      code(class="i") { name: 'jim' },
+      code(class="i") { name: 'mel' }
+      code ]
+      code(class="s")
+      code let findMatch = findUsers.find(function(user) {
+      code(class="i") return user.name === "kal"
+      code });
+
+    div(id="find-result-one" class="example")
+    
+    div(class="code")
+      code const findPosts = [
+      code(class="i") { id: 1, title: 'My Post' },
+      code(class="i") { id: 2, title: 'New Items' },
+      code(class="i") { id: 3, title: 'Old Stuff' }
+      code ]
+      code(class="s") 
+      code const findComment = { postId: 2, content: 'Nice post' };
+      code(class="s") 
+      code function postForComment(posts, comment) {
+      code(class="i") return posts.find(function(post) {
+      code(class="i2") return post.id === comment.postId;
+      code(class="i") })
+      code }
+    
+    div(id="find-result-two" class="example")
