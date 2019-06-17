@@ -8,6 +8,11 @@
 
 Both names are for the same thing, the 2015 implementation of the ECMAScript standard.
 
+## Two types of changes within ES6
+
+1. Syntactic Sugar - reduced amount of code written
+2. New Features - add new functionality to JavaScript
+
 ## Array Helper Methods
 
 * forEach

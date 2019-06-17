@@ -1,7 +1,7 @@
 extends layouts/default.pug
 
 block content
-  div(class="container")
+  div(id="array-helpers-page" class="container")
     h2 Array Helpers
 
     ul
@@ -17,6 +17,8 @@ block content
         a(href="#every") every
       li
         a(href="#some") some
+      li
+        a(href="#reduce") reduce
 
     hr
 
@@ -191,7 +193,6 @@ block content
     p Returns a boolean true or false if some of the iterations meets a condition.
 
     div(class="code")
-
       code const computers2 = [
       code(class="i") { name: "Apple", ram: 24 },
       code(class="i") { name: "Compaq", ram: 4 },
@@ -205,3 +206,33 @@ block content
 
 
     div(id="some-result-one" class="example")
+
+    hr
+
+    h4(id="reduce") reduce
+
+    p Condense all values in an array to one output value - starting from an initial value.
+
+    div(class="code")
+      code const values = [2, 4, 9, 15];
+      code let sum = 0;
+      code(class="s") 
+      code let valuesResult = values.reduce(function(sum, number) {
+      code(class="i") return sum + number;
+      code }, 0);
+
+    div(id="reduce-result-one" class="example")
+
+    div(class="code")
+      code const primaryColors = [
+      code(class="i") { color: "red" },
+      code(class="i") { color: "yellow" },
+      code(class="i") { color: "blue" }
+      code ]
+      code(class="s")
+      code let colorArr = primaryColors.reduce(function(previous, primaryColor) {
+      code(class="i") previous.push(primaryColor.color);
+      code(class="i") return previous;
+      code }, []);
+
+    div(id="reduce-result-two" class="example")

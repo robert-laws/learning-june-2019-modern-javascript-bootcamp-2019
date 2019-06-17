@@ -1,0 +1,63 @@
+extends layouts/default.pug
+
+block content
+  div(id="variables-page" class="container")
+    h2 Variables
+
+    ul
+      li
+        a(href="#const") const
+      li
+        a(href="#let") let
+
+    hr
+
+    h4(id="const") const
+
+    p For variables with value that will not change over time
+
+    div(class="code")
+      code var name = "Bob";
+      code // ES6 question?
+      code // will value of variable ever change? No
+      code const name = "Bob";
+
+    h4(id="let") let
+
+    p For variables with values that will change over time
+
+    div(class="code")
+      code var totalItems = 0;
+      code // ES6 question?
+      code // will value of variable ever change? Yes
+      code let totalItems = 5;
+
+    h5 Problem Solved with const/let
+
+    p One important reason that const/let were added is that they allow for more legible code - const indicates values that will not change, let indicate codes that is expected to change.
+
+    h5 Hoisting
+
+    p During the compile phase, but before code execution - the codebase is scanned for functions and variable declarations. These are added to memory and placed within the Lexical Environment (a data structure that holds identifier-variable mappings). The definition in memory is available to the code, but for variables there is not assignment yet. Variables declared with the var keyword are initialized with undefined.
+
+    p Hoisting results in the code treating variables as if they were declared (but not assigned) at the top of their functional scope (if declared within a function) or global scope (if declared outside of a function).
+
+    p At execution variables are assigned value when the code reaches the line of their assignment.
+
+    div(class="code")
+      code function foo() {
+      code(class="i") console.log(a);
+      code }
+      code(class="s")
+      code let a = 20;
+      code foo(); // This is valid
+
+    div(class="code")
+      code function foo() {
+      code(class="i") console.log(a); // ReferenceError: a is not defined
+      code }
+      code(class="s")
+      code foo(); // This is not valid
+      code let a = 20;
+
+    p Another important note about const and let is that their scope is defined by the enclosing block, not just function.
