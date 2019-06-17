@@ -13,6 +13,10 @@ block content
         a(href="#filter") filter
       li
         a(href="#find") find
+      li
+        a(href="#every") every
+      li
+        a(href="#some") some
 
     hr
 
@@ -159,3 +163,45 @@ block content
       code }
     
     div(id="find-result-two" class="example")
+
+    hr
+
+    h4(id="every") every
+
+    p Returns a boolean true or false if every iteration meets a condition.
+
+    div(class="code")
+      code const computers = [
+      code(class="i") { name: "Apple", ram: 24 },
+      code(class="i") { name: "Compaq", ram: 4 },
+      code(class="i") { name: "Dell", ram: 32 },
+      code(class="i") { name: "Acer", ram: 16 }
+      code ]
+      code(class="s")
+      code computers.every(function(computer) {
+      code(class="i") return computer.ram > 16;
+      code });
+      
+    div(id="every-result-one" class="example")
+
+    hr
+
+    h4(id="some") some
+
+    p Returns a boolean true or false if some of the iterations meets a condition.
+
+    div(class="code")
+
+      code const computers2 = [
+      code(class="i") { name: "Apple", ram: 24 },
+      code(class="i") { name: "Compaq", ram: 4 },
+      code(class="i") { name: "Dell", ram: 32 },
+      code(class="i") { name: "Acer", ram: 16 }
+      code ]
+      code(class="s") 
+      code computers2.some(function(computer) {
+      code(class="i") return computer.ram > 16;
+      code });
+
+
+    div(id="some-result-one" class="example")
