@@ -32,15 +32,15 @@ var sassOptions = {
   outputStyle: "expanded"
 };
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return del(['build']);
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
   var stream = gulp.src(paths.scripts.src)
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['@babel/env']
+      presets: ['@babel/env']
     }))
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('.'))
@@ -48,7 +48,7 @@ gulp.task('scripts', function() {
   return stream;
 });
 
-gulp.task('pug', function() {
+gulp.task('pug', function () {
   var stream = gulp.src(paths.pug.src)
     .pipe(pug({
       pretty: true
@@ -57,7 +57,7 @@ gulp.task('pug', function() {
   return stream;
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', function () {
   var stream = gulp.src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on("error", sass.logError))
@@ -67,13 +67,13 @@ gulp.task('styles', function() {
   return stream;
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
   var stream = gulp.src(paths.images.src)
     .pipe(gulp.dest(paths.images.dest));
   return stream;
 });
 
-gulp.task('browser', function() {
+gulp.task('browser', function () {
   browserSync.init({
     server: {
       baseDir: "./build"
@@ -82,11 +82,11 @@ gulp.task('browser', function() {
 
   gulp.watch(paths.pug.watch, gulp.parallel('pug'))
     .on('change', browserSync.reload);
-    
+
   // watch and rebuild .css files
   gulp.watch(paths.styles.src, gulp.parallel('styles'))
     .on('change', browserSync.reload);
-    
+
   // watch and rebuild .js files
   gulp.watch(paths.scripts.src, gulp.parallel('scripts'))
     .on('change', browserSync.reload);
@@ -94,7 +94,15 @@ gulp.task('browser', function() {
   // Reload when html changes
   gulp.watch(paths.images.src, gulp.parallel('images'))
     .on('change', browserSync.reload);
-})
+});
+
+gulp.task('build', gulp.series('clean',
+  gulp.parallel(
+    'pug',
+    'styles',
+    'scripts',
+    'images'
+  )));
 
 gulp.task('serve', gulp.series('clean',
   gulp.parallel(
