@@ -1,0 +1,34 @@
+extends layouts/default.pug
+
+block content
+  div(id="template-strings-page" class="container")
+    h2 Variables
+
+    ul
+      li
+        a(href="#template-strings") template strings
+
+    hr
+
+    h4(id="template-strings") template strings
+
+    p Also known as interpolation, template strings allow for inclusion of javascript syntax within a string declaration.
+
+    div(class="code")
+      code const name = "Bob Cobb";
+      code let greeting = `Hello, welcome ${name}!`;    
+
+    div(id="template-strings-result-one" class="example")
+
+    div(class="code")
+      code const linkId = "main-link";
+      code const linkClass = "content-link";
+      code const linkHref = "https://www.google.com";
+      code(class="s")
+      code // this string can be confusing
+      code let link = "&lt;a id='" + linkId + "' href='" + linkHref + "' class='" + linkClass + "'&gt;Google&lt;/a&gt;";
+      code(class="s")
+      code // it can be rewritten using template strings
+      code let link = `&lt;a id='${linkId}' href='${linkHref}' class='${linkClass}'&gt;Google&lt;/a&gt;`;
+
+    div(id="template-strings-result-two" class="example")

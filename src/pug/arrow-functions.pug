@@ -1,0 +1,91 @@
+extends layouts/default.pug
+
+block content
+  div(id="arrow-functions-page" class="container")
+    h2 Arrow Functions
+    ul
+      li
+        a(href="#fat-arrow") fat arrow syntax
+      li
+        a(href="#advanced-use") advanced use of arrow functions
+      li
+        a(href="#lexical-this") lexical this
+
+    hr
+
+    h4(id="fat-arrow") fat arrow syntax
+
+    p Basic use includes a change to syntax and behavior of return value.
+
+    div(class="code")
+      code // requires a return statement if placed within {}
+      code const add = (a, b) => {
+      code(class="i") return a + b;
+      code }
+      code(class="s")
+      code add(5, 7);
+
+    div(id="arrow-functions-result-one" class="example")
+
+    div(class="code")
+      code // implicit return if all on one line
+      code const subtract = (a, b) => a - b
+      code(class="s")
+      code subtract(19, 8);
+
+    div(id="arrow-functions-result-two" class="example")
+    
+    hr
+
+    h4(id="advanced-use") advanced use of arrow functions
+
+    p Arrow functions syntax can be reduced even further.
+
+    div(class="code")
+      code // if there's no argument empty parentheses indicate a function call
+      code const sayHello = () => "hello!!!";
+      code sayHello();
+    
+    div(id="arrow-functions-result-five" class="example")
+
+    div(class="code")
+      code // if there's a single argument no parentheses needed for parameter
+      code const double = number => 2 * number;
+      code double(8);
+    
+    div(id="arrow-functions-result-three" class="example")
+
+    div(class="code")
+      code // simplified syntax when used as the callback function
+      code const fewNumbers = [2, 5, 9];
+      code fewNumbers.map(function(number) {
+      code(class="i") return 2 * number;
+      code });
+      code(class="s")
+      code // this can be refactored to:
+      code fewNumbers.map(number => 2 * number);
+    
+    div(id="arrow-functions-result-four" class="example")
+
+    hr
+
+    h4(id="lexical-this") lexical this
+
+    p Using fat arrow functions will help prevent situations where 'this' loses context when passed to a helper function.
+
+    div(class="code")
+      code // use of 'this.teamName' works within the map function with lexical this
+      code const team = {
+      code(class="i") members: ["Bob", "William"],
+      code(class="i") teamName: "Super Group",
+      code(class="i") teamSummary: function() {
+      code(class="i2") return this.members.map(member => {
+      code(class="i3") return `${member} is on team ${this.teamName}`;
+      code(class="i2") });
+      code(class="i") }
+      code }
+      code(class="s")
+      code team.teamSummary()
+
+    div(id="arrow-functions-result-six" class="example")
+
