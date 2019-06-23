@@ -1,0 +1,113 @@
+extends layouts/default.pug
+
+block content
+  div(id="destructing-page" class="container")
+    h2 Enhanced Object Literals
+    ul
+      li
+        a(href="#destructing") destructing
+      li
+        a(href="#destructing-arguments") destructing arguments object
+      li
+        a(href="#destructing-arrays") destructing arrays
+      li
+        a(href="#destructing-arrays-and-objects") destructing arrays and objects
+      
+    hr
+
+    h4(id="destructing") destructing
+
+    p It's possible to pull properties off an object using destructing
+
+    div(class="code")
+      code const expense = {
+      code(class="i") type: "business",
+      code(class="i") amount: "$45 USD"
+      code }
+      code(class="s")
+      code const { type, amount } = expense;
+      code(class="s")
+      code type;
+      code amount;
+
+    div(id="destructing-result-one" class="example")
+
+    h4(id="destructing-arguments") destructing arguments object
+
+    p Using destructing, an object can have properties pulled off and passed into a function as arguments
+
+    div(class="code")
+      code const savedFile = {
+      code(class="i") extension: 'jpg',
+      code(class="i") name: 'repost',
+      code(class="i") size: 14040
+      code };
+      code(class="s")
+      code function fileSummary({name, extension, size}) {
+      code(class="i") return `The file ${name}.${extension} is of size ${size}.`;
+      code }
+
+
+    div(id="destructing-result-two" class="example")
+
+    h4(id="destructing-arrays") destructing arrays
+
+    p Destructing arrays means pulling of different elements
+
+    div(class="code")
+      code const companies = [
+      code(class="i") 'Google',
+      code(class="i") 'Facebook',
+      code(class="i") 'Uber'
+      code ]
+      code(class="s")
+      code const [name, name2, name3, name4] = companies;
+      code // const firstCompany = companies[0]; // improved with destructing
+      code const [ name, ...names ] = companies;
+
+    div(id="destructing-result-three" class="example")
+
+    h4(id="destructing-arrays-and-objects") destructing arrays and objects
+
+    p Destructing also works for arrays of objects and an object with an array
+
+    div(class="code")
+      code const people = [
+      code(class="i") { firstName: "Bob Cobb", age: 34 },
+      code(class="i") { firstName: "Hal Hope", age: 31 },
+      code(class="i") { firstName: "Jim Jupe", age: 28 }
+      code ]
+      code(class="s")
+      code const [{firstName}] = people;
+      code(class="s")
+      code const Google = {
+      code(class="i") locations: ['Sunnyvale', 'New York', 'London']
+      code }
+      code(class="s")
+      code const { locations: [ firstLocation ] } = Google;
+      code(class="s")
+      code firstName;
+      code firstLocation;
+
+    div(id="destructing-result-four" class="example")
+
+    h4(id="destructing-function-arguments") destructing function arguments
+
+    p Using destructing it's possible to pass an object to a function that maps to an object
+
+    div(class="code")
+      code function signup({ username, email, dateOfBirth, city, password }) {
+      code(class="i") // create new user
+      code }
+      code(class="s")
+      code const user = {
+      code(class="i") username: "Kal Kool",
+      code(class="i") password: "hello",
+      code(class="i") email: "kalkool@mail.net",
+      code(class="i") dateOfBirth: "1/2/1989",
+      code(class="i") city: "Chicago"
+      code }
+      code(class="s")
+      code signup(user);
+
+    div(id="destructing-result-five" class="example")
