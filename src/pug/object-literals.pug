@@ -1,0 +1,33 @@
+extends layouts/default.pug
+
+block content
+  div(id="object-literals-page" class="container")
+    h2 Enhanced Object Literals
+    ul
+      li
+        a(href="#object-literals") enhanced object literals
+      
+    hr
+
+    h4(id="object-literals") enhanced object literals
+
+    p Object literals can condense the code written by omitting redundant variable and function names.
+
+    div(class="code")
+      code function createBookShop(inventory) {
+      code(class="i") return {
+      code(class="i2") inventory,
+      code(class="i2") inventoryValue() {
+      code(class="i3") return this.inventory.reduce((total, book) => total + book.price, 0);
+      code(class="i2") },
+      code(class="i2") priceForTitle(title) {
+      code(class="i3") return this.inventory.find(book => book.title === title).price;
+      code(class="i2") }
+      code(class="i") }
+      code }
+      code(class="s")
+      code const bookShop = createBookShop(inventory);
+      code bookShop.inventoryValue();
+      code bookShop.priceForTitle("New Things");
+
+    div(id="object-literals-result-one" class="example")
