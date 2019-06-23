@@ -1,0 +1,40 @@
+extends layouts/default.pug
+
+block content
+  div(id="default-function-arguments-page" class="container")
+    h2 Default Function Arguments
+    ul
+      li
+        a(href="#default-function-arguments") default function arguments
+      
+    hr
+
+    h4(id="default-function-arguments") default function arguments
+
+    p Adding a default value to an argument will ensure it has a value if the user does not supply one.
+
+    div(class="code")
+      code function makeAjaxRequest(url, method = 'GET') {
+      code(class="i") // default value for method is 'GET' if user did not assign
+      code(class="i") return method;
+      code }
+      code(class="s")
+      code makeAjaxRequest()
+
+    div(id="default-function-arguments-result-one" class="example")
+
+    div(class="code")
+      code function User(id) {
+      code(class="i") this.id = id;
+      code }
+      code(class="s") 
+      code function generateId() {
+      code(class="i") return Math.floor(Math.random() * 999);
+      code }
+      code(class="s") 
+      code function createAdminUser(user = new User(generateId())) {
+      code(class="i") user.admin = true;
+      code(class="i") return user;
+      code }
+
+    div(id="default-function-arguments-result-two" class="example")
