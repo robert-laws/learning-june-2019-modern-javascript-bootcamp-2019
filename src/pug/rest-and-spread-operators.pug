@@ -5,15 +5,55 @@ block content
     h2 Rest And Spread Operators
     ul
       li
-        a(href="#rest-and-spread-operators") rest and spread operators
+        a(href="#rest-operator") rest operator
+      li
+        a(href="#spread-operator") spread operator
       
     hr
 
-    h4(id="rest-and-spread-operators") rest and spread operators
+    h4(id="rest-operator") rest operator
 
-    p ...
+    p For instances when there's an undetermined number of arguments, they can be captured using the rest operator.
 
     div(class="code")
-      
+      code function addNumbers(...numbers) {
+      code(class="i") return numbers.reduce((sum, number) => {
+      code(class="i2") return sum + number;
+      code(class="i") }, 0);
+      code }
+      code(class="s")
+      code addNumbers(2, 4, 6, 8, 10, 20)
 
     div(id="rest-and-spread-operators-result-one" class="example")
+
+    h4(id="rest-operator") spread operator
+    
+    p For instances when a collection of values needs to be spread out.
+
+    div(class="code")
+      code const defaultColors = ['red', 'green'];
+      code const userFavoriteColors = ['orange', 'yellow'];
+      code(class="s")
+      code [...defaultColors, ...userFavoriteColors]      
+
+    div(id="rest-and-spread-operators-result-two" class="example")
+
+    div(class="code")
+      code const defaultColors = ['red', 'green'];
+      code const userFavoriteColors = ['orange', 'yellow'];
+      code const fallColors = ['fire red', 'fall orange'];
+      code(class="s")
+      code ['blue', ...fallColors, ...defaultColors, ...userFavoriteColors];
+
+    div(id="rest-and-spread-operators-result-three" class="example")
+
+    div(class="code")
+      code function validateShoppingList(...items) {
+      code(class="i") if(items.indexOf('milk') < 0) {
+      code(class="i2") return ['milk', ...items];
+      code(class="i") }
+      code(class="s")
+      code(class="i") return items;
+      code }
+
+    div(id="rest-and-spread-operators-result-four" class="example")
