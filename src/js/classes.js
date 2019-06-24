@@ -2,7 +2,7 @@ if (document.querySelector("#classes-result-one")) {
   let classesResultOne = document.querySelector("#classes-result-one");
   let classesResultTwo = document.querySelector("#classes-result-two");
 
-
+  // Class Definition
   class Car {
     constructor(options) {
       this.carName = options.carName;
@@ -12,11 +12,10 @@ if (document.querySelector("#classes-result-one")) {
       return "vroom!";
     }
   }
-
   const car = new Car({carName: "Toyota"});
-
   classesResultOne.innerHTML = `<p>${car.drive()}</p>`;
 
+  // Inheritance
   class Toyota extends Car {
     constructor(options) {
       super(options); // Car.constructor();
@@ -27,9 +26,6 @@ if (document.querySelector("#classes-result-one")) {
       return "beep";
     }
   }
-
-  const toyota = new Toyota({carName: "Camry", color: "red"});
-  
-
+  const toyota = new Toyota({carName: "Camry", color: "red"});  
   classesResultTwo.innerHTML = `<p>${toyota.carName}<br>${toyota.honk()}</p>`;
 }
