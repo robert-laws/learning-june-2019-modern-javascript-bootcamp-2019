@@ -18,4 +18,15 @@ if(document.querySelector("#array-helpers-page")) {
 
   let resTwo = document.querySelector("#for-each-result-two");
   resTwo.innerHTML = `<p>${sum}</p>`;
+
+  // For...Of
+  const someNumber = [4, 5, 6, 7];
+
+  let total = 0;
+  for (let number of someNumber) {
+    total += number;
+  }
+
+  let forOfResultOne = document.querySelector("#for-of-result-one");
+  forOfResultOne.innerHTML = `<p>${total}</p>`;
 }

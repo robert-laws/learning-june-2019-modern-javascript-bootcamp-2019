@@ -8,6 +8,8 @@ block content
       li
         a(href="#for-each") forEach
       li
+        a(href="#for-of") For...Of
+      li
         a(href="#map") map
       li
         a(href="#filter") filter
@@ -46,6 +48,22 @@ block content
       code number.forEach(add);
 
     div(id="for-each-result-two" class="example")
+
+    hr
+
+    h4(id="for-of") For...Of
+   
+    p Iterates through arrays of data. Useful with generators.
+
+    div(class="code")
+      code const someNumber = [4, 5, 6, 7];
+      code let total = 0;
+      code(class="s")
+      code for (let number of someNumber) {
+      code(class="i") total += number;
+      code }
+      
+    div(id="for-of-result-one" class="example")
 
     hr
 

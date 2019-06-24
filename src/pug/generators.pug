@@ -7,14 +7,184 @@ block content
     ul
       li
         a(href="#generators") generators
+      li
+        a(href="#practical-use") practical use
+      li
+        a(href="#delegation") delegation
+      li
+        a(href="#symbol-iterator") symbol.iterator
+      li
+        a(href="#recursion") recursion
       
     hr
 
     h4(id="generators") generators
 
-    p ...
+    p Concept is that with generators it's possible to execute code, return a value, and continue running code from where it was left off.
+
+    p Generators work really well with For...Of loops. They can iterate over any data structure that is possible.
+
+    p Basic Usage
 
     div(class="code")
+      code function* interestingColors() {
+      code(class="i") yield 'red';
+      code(class="i") yield 'blue';
+      code(class="i") yield 'green';
+      code }
+      code(class="s")
+      code const myInterestingColors = [];
+      code(class="s")
+      code for (let color of interestingColors()) {
+      code(class="i") myInterestingColors.push(color);
+      code }
 
 
     div(id="generators-result-one" class="example")
+
+    hr
+
+    h4(id="practical-use") practical use
+
+    p ...
+
+    div(class="code")
+      code const myTeam = {
+      code(class="i") size: 3,
+      code(class="i") department: 'Library',
+      code(class="i") lead: 'Mary',
+      code(class="i") manager: 'Tom',
+      code(class="i") assistant: 'Billy'
+      code };
+      code(class="s")
+      code function* TeamIterator(team) {
+      code(class="i") yield team.lead;
+      code(class="i") yield team.manager;
+      code(class="i") yield team.assistant;
+      code }
+      code(class="s")
+      code const teamNames = [];
+      code for (let name of TeamIterator(myTeam)) {
+      code(class="i") teamNames.push(name);
+      code }
+
+
+    div(id="generators-result-two" class="example")
+
+    hr
+
+    h4(id="delegation") delegation
+
+    p Generators can delegate use of multiple generators within the original generator.
+
+    div(class="code")
+      code const testingTeam = {
+      code(class="i") lead: 'Kal',
+      code(class="i") tester: 'Melvin'
+      code }
+      code(class="s")
+      code const myTeam = {
+      code(class="i") size: 3,
+      code(class="i") department: 'Library',
+      code(class="i") lead: 'Mary',
+      code(class="i") manager: 'Tom',
+      code(class="i") assistant: 'Billy'
+      code };
+      code(class="s")
+      code function* TeamIterator(team) {
+      code(class="i") yield team.lead;
+      code(class="i") yield team.manager;
+      code(class="i") yield team.assistant;
+      code(class="i") const testingTeamGenerator = TestingTeamIterator(myTeam.testingTeam);
+      code(class="i") yield* testingTeamGenerator;
+      code }
+      code(class="s")
+      code function* TestingTeamIterator(team) {
+      code(class="i") yield team.lead;
+      code(class="i") yield team.tester;
+      code }
+      code(class="s")
+      code const teamNames = [];
+      code for (let name of TeamIterator(myTeam)) {
+      code(class="i") teamNames.push(name);
+      code }
+
+    div(id="generators-result-three" class="example")
+
+    hr
+
+    h4(id="symbol-iterator") symbol.iterator
+
+    p Symbol.iterator tools that teaches objects how to respond to the For...Of iterator.
+
+    p [Symbol.iterator] is key interpolation in ES6.
+
+    div(class="code")
+      code const testingTeam = {
+      code(class="i") lead: 'Kal',
+      code(class="i") tester: 'Melvin',
+      code(class="i") [Symbol.iterator]: function* () {
+      code(class="i2") yield this.lead;
+      code(class="i2") yield this.tester;
+      code(class="i") }
+      code }
+      code(class="s")
+      code const myTeam = {
+      code(class="i") testingTeam,
+      code(class="i") size: 3,
+      code(class="i") department: 'Library',
+      code(class="i") lead: 'Mary',
+      code(class="i") manager: 'Tom',
+      code(class="i") assistant: 'Billy',
+      code(class="i") [Symbol.iterator]: function* () {
+      code(class="i2") yield this.lead;
+      code(class="i2") yield this.manager;
+      code(class="i2") yield this.assistant;
+      code(class="i2") yield* this.testingTeam;
+      code(class="i") }
+      code };
+      code(class="s")
+      code const teamNames = [];
+      code(class="s")
+      code for (let name of myTeam) {
+      code(class="i") teamNames.push(name);
+      code }
+
+    div(id="generators-result-four" class="example")
+
+    hr
+
+    h4(id="recursion") recursion
+
+    p A common data structure is a tree that has nodes with children, and those children are nodes with their own children.
+
+    div(class="code")
+      code class Comment {
+      code(class="i") constructor(content, children) {
+      code(class="i2") this.content = content;
+      code(class="i2") this.children = children;
+      code(class="i") }
+      code(class="s")
+      code(class="i") *[Symbol.iterator]() {
+      code(class="i2") yield this.content;
+      code(class="i2") for (let child of this.children) {
+      code(class="i3") yield* child;
+      code(class="i2") }
+      code(class="i") }
+      code }
+      code(class="s")
+      code const children = [
+      code(class="i") new Comment('good comment', []),
+      code(class="i") new Comment('bad comment', []),
+      code(class="i") new Comment('meh', [])
+      code ]
+      code(class="s")
+      code const tree = new Comment('Great Post!', children);
+      code(class="s")
+      code const treeValues = [];
+      code for (let value of tree) {
+      code(class="i") treeValues.push(value);
+      code }
+
+
+    div(id="generators-result-five" class="example")

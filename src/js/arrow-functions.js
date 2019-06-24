@@ -25,9 +25,9 @@ if(document.querySelector("#arrow-functions-page")) {
   arrowFunctionsFive.innerHTML = `<p>${sayHello()}</p>`;
 
   const fewNumbers = [2, 5, 9];
-  // fewNumbers.map(function(number) {
-  //   return 2 * number;
-  // });
+  fewNumbers.map(function(number) {
+    return 2 * number;
+  });
 
   arrowFunctionsFour.innerHTML = `<p>${JSON.stringify(fewNumbers.map(number => 2 * number))}</p>`;
 

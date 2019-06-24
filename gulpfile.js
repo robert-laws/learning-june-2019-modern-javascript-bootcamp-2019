@@ -40,7 +40,7 @@ gulp.task('scripts', function () {
   var stream = gulp.src(paths.scripts.src)
     .pipe(sourcemaps.init())
     .pipe(babel({
-      presets: ['@babel/env']
+      plugins: ['@babel/transform-runtime']
     }))
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('.'))
