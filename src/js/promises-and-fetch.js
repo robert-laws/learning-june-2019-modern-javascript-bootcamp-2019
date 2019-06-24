@@ -1,17 +1,17 @@
 if(document.querySelector("#promises-and-fetch-page")) {
   promisesAndFetchResultOne = document.querySelector("#promises-and-fetch-result-one");
 
-  const getSpacePeople = () => 
-    fetch('http://api.open-notify.org/astros.json')
-      .then(res => res.json());
+  // const getSpacePeople = () => 
+  //   fetch('http://api.open-notify.org/astros.json')
+  //     .then(res => res.json());
 
-  const spaceNames = () =>
-    getSpacePeople()
-      .then(json => json.people)
-      .then(people => people.map(p => p.name))
-      .then(names => names.join(", "));
+  // const spaceNames = () =>
+  //   getSpacePeople()
+  //     .then(json => json.people)
+  //     .then(people => people.map(p => p.name))
+  //     .then(names => names.join(", "));
 
-  promisesAndFetchResultOne.innerHTML =  `<p>${spaceNames().resolve(value)}</p>`;
+  // promisesAndFetchResultOne.innerHTML =  `<p>${spaceNames().resolve(value)}</p>`;
   
   // const spacePeople = () => {
   //   return new Promise((resolves, rejects) => {
@@ -38,5 +38,26 @@ if(document.querySelector("#promises-and-fetch-page")) {
   //   )
   // );
 
+  // let promise = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve();
+  //   }, 3000);
+  // });
 
+  // promise.then(() => console.log('promise finished...'))
+  //   .then(() => console.log("also run..."))
+  //   .catch(() => console.log("error..."))
+
+  const url = "http://api.open-notify.org/astros.json";
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => writeData(data))
+    .catch(error => console.log(error))
+
+  function writeData(data) {
+    data.people.forEach(function(item) {
+      promisesAndFetchResultOne.innerHTML += `<p>${item.name}</p>`;
+    })
+  }
 }

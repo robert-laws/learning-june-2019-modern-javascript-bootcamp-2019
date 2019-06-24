@@ -1,23 +1,27 @@
 if(document.querySelector("#array-helpers-page")) {
-  let names = ["bob", "hal", "mel", "ned", "abe", "jim", "lou", "kal", "vin", "don", "sal"];
+  let names = ["bobby", "hal", "melvin", "jimmy", "lou", "kalvin", "vin", "donald", "sal"];
 
-  let resOne = document.querySelector("#for-each-result-one");
+  allNames = [];
 
   names.forEach(function(name) {
-    resOne.innerHTML += `<p>${name}</p>`;
-  });
-
+    name.length > 3 ? allNames.push(name) : ""
+  })
+  let resOne = document.querySelector("#for-each-result-one");
+  resOne.innerHTML += `<p>${JSON.stringify(allNames)}</p>`;
+  
   let numbers = [1, 2, 3, 4, 5, 6];
-  let sum = 0;
+  let startingSum = 0;
 
-  function add(number) {
-    sum += number;
-  }
+  numbers.forEach(number => startingSum += number);
 
-  numbers.forEach(add);
+  // function add(number) {
+  //   startingSum += number;
+  // }
+
+  // numbers.forEach(add);
 
   let resTwo = document.querySelector("#for-each-result-two");
-  resTwo.innerHTML = `<p>${sum}</p>`;
+  resTwo.innerHTML = `<p>${startingSum}</p>`;
 
   // For...Of
   const someNumber = [4, 5, 6, 7];

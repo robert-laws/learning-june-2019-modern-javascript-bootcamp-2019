@@ -25,21 +25,23 @@ block content
     hr
 
     h4(id="for-each") forEach
-   
+
     p Loops through the array and returns a callback - which performs some action on the array item.
 
     div(class="code")
-      code let names = ["bob", "hal", "mel", "ned", "abe", "jim", "lou", "kal", "vin", "don", "sal"];
+      code let names = ["bobby", "hal", "melvin", "jimmy", "lou", "kalvin", "vin", "donald", "sal"];
       code(class="s") 
+      code allNames = [];
+      code(class="s")
       code names.forEach(function(name) {
-      code(class="i") console.log(name);
+      code(class="i") name.length > 3 ? allNames.push(name) : ""
       code })
 
     div(id="for-each-result-one" class="example")
 
     div(class="code")
       code let numbers = [1, 2, 3, 4, 5, 6];
-      code let sum = 0;
+      code var sum = 0;
       code(class="s") 
       code function add(number) {
       code(class="i") sum += number;
@@ -52,7 +54,7 @@ block content
     hr
 
     h4(id="for-of") For...Of
-   
+
     p Iterates through arrays of data. Useful with generators.
 
     div(class="code")

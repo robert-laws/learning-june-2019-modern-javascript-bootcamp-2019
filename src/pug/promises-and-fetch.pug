@@ -12,10 +12,23 @@ block content
 
     h4(id="promises") promises
 
-    p ...
+    p Exist in three possible states - unresolved, resolved, rejected. Unresolved means waiting for something to finish. Resolved means something finished and everything went okay. Rejected means something finished and something went wrong.
+
+    p If everything goes okay - status = resolved - a callback is raised with 'then'. If something goes wrong - status = rejected - and callback 'catch' is raised.
 
     div(class="code")
+      code const url = "http://api.open-notify.org/astros.json";
+      code(class="s")
+      code fetch(url)
+      code(class="i") .then(response => response.json())
+      code(class="i") .then(data => writeData(data))
+      code(class="i") .catch(error => console.log(error))
+      code(class="s")
+      code function writeData(data) {
+      code(class="i") data.people.forEach(function(item) {
+      code(class="i2") promisesAndFetchResultOne.innerHTML += `&lt;p&gt;${item.name}&lt;/p&gt;`;
+      code(class="i") })
+      code }
       
-
 
     div(id="promises-and-fetch-result-one" class="example")
