@@ -1,0 +1,59 @@
+extends layouts/default.pug
+
+block content
+  div(id="classes-page" class="container")
+    h2 Classes
+    ul
+      li
+        a(href="#classes") classes
+      li
+        a(href="#inheritance") inheritance
+      li
+        a(href="#extending-behavior") extending behavior
+      
+    hr
+
+    h4(id="classes") classes
+
+    p Allows for use of class concepts in JavaScript.
+
+    div(class="code")
+      code class Car {
+      code(class="i") constructor({carName}) {
+      code(class="i2") this.carName = carName;
+      code(class="i") }
+      code(class="s")
+      code(class="i") drive() {
+      code(class="i2") return "vroom!";
+      code(class="i") }
+      code }
+      code(class="s")
+      code const car = new Car({carName: "Toyota"});
+      code car.drive();
+
+    div(id="classes-result-one" class="example")
+
+    hr
+
+    h4(id="inheritance") inheritance
+
+    p Using the extends keyword, one class can inherit from another. Using the super() keyword, it can also inherit its constructor method.
+
+    div(class="code")
+      code class Toyota extends Car {
+      code(class="i") constructor(options) {
+      code(class="i2") super(options); // Car.constructor();
+      code(class="i2") this.color = options.color;
+      code(class="i") }
+      code(class="s")
+      code(class="i") honk() {
+      code(class="i2") return "beep";
+      code(class="i") }
+      code }
+      code(class="s")
+      code const toyota = new Toyota({carName: "Camry", color: "red"});
+      code(class="s")
+      code toyota.carName;
+      code toyota.honk();
+
+    div(id="classes-result-two" class="example")
